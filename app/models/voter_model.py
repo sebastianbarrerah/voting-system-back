@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 class Voter(Base):
     __tablename__ = "voters"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(String, primary_key=True, index=True)
     name = Column(String(100), index=True)
     email = Column(String, unique=True, index=True)
     hasVoted = Column(Boolean, default=False)
