@@ -1,10 +1,16 @@
 from pydantic import BaseModel
 from typing import Optional
 
-class VoterSchema(BaseModel):
-    id: str
+class VoterCreate(BaseModel):
+    name: str
+    email: str
+    password: Optional[str] = None
+
+class VoterResponse(BaseModel):
+    id: int
     name: str
     email: str
     hasVoted: bool
-    password: Optional[str] = None
-    created_at: str
+
+    class Config:
+        orm_mode = True
