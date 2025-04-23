@@ -1,3 +1,4 @@
+from uuid import UUID
 from pydantic import BaseModel
 from typing import Optional
 
@@ -7,10 +8,11 @@ class VoterCreate(BaseModel):
     password: Optional[str] = None
 
 class VoterResponse(BaseModel):
-    id: int
+    id: UUID
     name: str
     email: str
+    password: Optional[str] = None
     hasVoted: bool
 
     class Config:
-        orm_mode = True
+        from_attributes = True

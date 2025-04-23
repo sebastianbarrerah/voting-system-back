@@ -1,18 +1,20 @@
 from fastapi import FastAPI  
-from app.models.candidate_model import Candidate  # type: ignore # noqa: F401
-from app.models.voter_model import Voter  # type: ignore # noqa: F401
-from app.models.vote_model import Vote # type: ignore  # noqa: F401
 from app.database import Base, engine
-
+from app.routes.voters_route import voter_routes
+from app.routes.candidates_route import candidate_routes
+from app.routes.votes_route import vote_routes
 
 app = FastAPI()
 
+app.include_router(voter_routes, prefix="/api", tags=["Voters"])
+app.include_router(candidate_routes, prefix="/api", tags=["Candidates"])
+app.include_router(vote_routes, prefix="/api", tags=["Votes"])
 
 @app.on_event("startup")
-def on_startup():
+async def startup():
+    Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
-    
+    return {"mensaje": "Hola mundo"}
