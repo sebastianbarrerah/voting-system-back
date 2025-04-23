@@ -30,3 +30,6 @@ Se crea un archivo .env con los datos que hay el copy, se añade URI de conexió
 **3 Correr el proyecto**
 
     uvicorn app.main:app --reload
+
+**4 Mirar documentación**
+***swagger:*** http://
