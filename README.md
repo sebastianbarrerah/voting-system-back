@@ -32,4 +32,7 @@ Se crea un archivo .env con los datos que hay el copy, se añade URI de conexió
     uvicorn app.main:app --reload
 
 **4 Mirar documentación**
-***swagger:*** http://
+***swagger:*** http://localhost:8000
+
+**5 Front**
+https://github.com/sebastianbarrerah/prueba-tecnica-front/tree/main
